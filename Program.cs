@@ -119,12 +119,12 @@ namespace HighSchool
                 Console.WriteLine("Choose the Number of the class where you want to see the students in:");
                 int.TryParse(Console.ReadLine(), out int Choice);
 
-                var StuCla = Context.StudentClasses.Where(c => c.ClassId == Choice).Select(s => s.StudentId).ToList();
-                var Stu = Context.Students.Where(s => StuCla.Contains(s.Id)).ToList();
+                var StuCla = Context.StudentClasses.Where(c => c.ClassId == Choice).Select(s => s.Student);//.ToList();
+                //var Stu = Context.Students.Where(s => StuCla.Contains(s.Id));//.ToList();
 
                 Console.WriteLine($"Students in {Context.Classes.FirstOrDefault(x => x.Id == Choice).Class1}");
 
-                foreach (var item in Stu)
+                foreach (var item in StuCla)
                 {
                     Console.WriteLine(item.Id + ". " + item.Fname + " " + item.Lname);
                 }
